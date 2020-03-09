@@ -13,7 +13,7 @@ double AddTest::add(double d)
 
 std::vector<int> AddTest::getVarAr(std::vector<int> add)
 {
-    add.insert(add.end(), varAr.rbegin(), varAr.rend());
+    add.insert(add.end(), varAr.begin(), varAr.end());
     std::sort(add.rbegin(),add.rend());
     return add;
 }
