@@ -37,3 +37,9 @@ TEST_F(AddTestTest, CheckArrayAddition) {
     EXPECT_EQ (pointer->getVarAr({5,4,3}), std::vector<int>({9,8,7,6,5,4,3}));
 }
 
+TEST_F(AddTestTest, CheckArrayAddition2) {
+    //arrange
+    //act
+    //assert
+    EXPECT_EQ (pointer->getVarAr({3,4,5}), std::vector<int>({9,8,7,6,3,4,5}));
+}
