@@ -1,36 +1,39 @@
 #include "gtest/gtest.h"
 #include "../src/functions.h"
 
-AddTest a{4.4,"Hello ",{9,8,7,6}};
-
 class AddTestTest: public ::testing::Test{
+protected:
+    AddTest *pointer;
 public:
     virtual void SetUp() override{
-
+        pointer = new AddTest;
+        pointer->varD = 4.4;
+        pointer->varS = "Hello ";
+        pointer->varAr = {9,8,7,6};
     }
     virtual void TearDown() override{
-
+        delete pointer;
     }
 };
 
-TEST(AddTest, test1) {
+TEST_F(AddTestTest, CheckDoubleAddition) {
     //arrange
     //act
     //assert
-    EXPECT_EQ(a.add(1.6),  6.0);
+    EXPECT_EQ(pointer->add(1.6),  5.0);
 }
 
-TEST(AddTest, test2) {
+TEST_F(AddTestTest, CheckStringAddition) {
     //arrange
     //act
     //assert
-    EXPECT_EQ (a.getVarS("World"), "Hello World");
+    EXPECT_EQ(pointer->getVarS("World"), "Hello World");
 }
 
-TEST(AddTest, test3) {
+TEST_F(AddTestTest, CheckArrayAddition) {
     //arrange
     //act
     //assert
-    EXPECT_EQ (a.getVarAr({5,4,3}), std::vector<int>({9,8,7,6,5,4,3}));
+    EXPECT_EQ (pointer->getVarAr({5,4,3}), std::vector<int>({9,8,7,6,5,4,3}));
 }
 
